@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | John's Cleaning Services — Get a Free Quote</title>
+    <meta name="description"
+        content="Get in touch with John's Cleaning Services. Request a free quote, call us, WhatsApp us, or fill in our secure online form. Fast response guaranteed." />
+    <meta property="og:title" content="Contact John's Cleaning Services" />
+    <meta property="og:description" content="Get your free cleaning quote today — we respond within 1 hour." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231E3A8A'/><text y='.9em' font-size='70' x='12'>🧹</text></svg>" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        @media(max-width:768px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-info-card {
+            background: var(--blue);
+            border-radius: 20px;
+            padding: 2.5rem;
+            color: white;
+        }
+
+        .contact-info-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: .5rem;
+        }
+
+        .contact-info-card>p {
+            color: rgba(255, 255, 255, .75);
+            font-size: .9rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, .1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-info-icon svg {
+            color: var(--green);
+        }
+
+        .contact-info-label {
+            color: rgba(255, 255, 255, .55);
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: .2rem;
+        }
+
+        .contact-info-value {
+            color: white;
+            font-weight: 600;
+            font-size: .95rem;
+            text-decoration: none;
+            display: block;
+        }
+
+        .contact-info-value:hover {
+            color: var(--green);
+        }
+
+        .wa-contact-btn {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            background: #25D366;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 2rem;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .wa-contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, .4);
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 32px rgba(0, 0, 0, .08);
+            padding: 2.5rem;
+        }
+
+        .form-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: .35rem;
+        }
+
+        .form-card>p {
+            color: var(--gray-600);
+            font-size: .875rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media(max-width:560px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .map-wrap {
+            border-radius: 16px;
+            overflow: hidden;
+            margin-top: 3rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, .1);
+        }
+
+        .spin {
+            animation: spin .8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        #form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: #ecfdf5;
+            border-radius: 12px;
+            border: 2px solid var(--green);
+        }
+
+        #form-success h3 {
+            color: var(--green-dark);
+            font-size: 1.3rem;
+            margin-bottom: .5rem;
+        }
+
+        #form-success p {
+            color: var(--gray-600);
+        }
+
+        #whatsapp-fallback-wrap {
+            display: none;
+            margin-top: 1.5rem;
+        }
+
+        input[type="date"].form-control::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            opacity: .7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loading">
+        <div class="loader-inner">
+            <div class="loader-icon">🧹</div>
+            <div class="loading-logo">John's <span>Cleaning</span></div>
+            <p class="loader-tagline">Professional &bull; Trusted &bull; Spotless</p>
+            <div class="loading-bar">
+                <div class="loading-bar-fill"></div>
+            </div>
+            <div class="loader-dots"><span></span><span></span><span></span></div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp -->
+    <a id="whatsapp-float" href="https://wa.me/447434870681" target="_blank" rel="noopener"
+        aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">John's <span>Cleaning</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="tel:+447434870681" class="btn btn-outline" style="padding:.55rem 1rem;font-size:.8rem;">📞 +44
+                    7434 870681</a>
+                <a href="contact.html" class="btn btn-green">Get Free Quote</a>
+            </div>
+            <button id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu">
+        <button id="mobile-close"
+            style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:white;font-size:2rem;cursor:pointer;">✕</button>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="btn btn-green" style="margin-top:1rem;">Get Free Quote</a>
+    </div>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <span class="section-tag">Get In Touch</span>
+        <h1>Request Your Free Quote</h1>
+        <p>Fill in the form below and we'll get back to you within 1 hour — or WhatsApp us for an instant response.</p>
+        <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span class="current">Contact</span></div>
+    </div>
+
+    <!-- Contact Section -->
+    <section style="background:var(--gray-50);">
+        <div class="container">
+            <div class="contact-layout">
+
+                <!-- Left: Contact Info -->
+                <div class="fade-up">
+                    <div class="contact-info-card">
+                        <h3>Contact Information</h3>
+                        <p>We're here to help — reach us any way you prefer.</p>
+
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-info-label">Phone</div>
+                                <a href="tel:+447434870681" class="contact-info-value">+44 7434 870681</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-info-label">Email</div>
+                                <a href="mailto:info@johnscleaning.co.uk"
+                                    class="contact-info-value">info@johnscleaning.co.uk</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-info-label">Location</div>
+                                <span class="contact-info-value" style="cursor:default;">London, United Kingdom</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-info-label">Opening Hours</div>
+                                <span class="contact-info-value" style="cursor:default;">Mon–Sat: 8am – 7pm</span>
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/447434870681?text=Hi%20John's%20Cleaning!%20I'd%20like%20a%20free%20quote."
+                            target="_blank" rel="noopener" class="wa-contact-btn">
+                            <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            Chat on WhatsApp — Instant Reply
+                        </a>
+
+                        <div
+                            style="margin-top:2rem;padding:1.25rem;background:rgba(34,197,94,.1);border-radius:12px;border:1px solid rgba(34,197,94,.3);">
+                            <p style="color:#86efac;font-size:.85rem;margin:0;">⚡ <strong>We typically respond within 60
+                                    minutes</strong> during business hours. Fast, no-hassle quotes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Quote Form -->
+                <div class="fade-up">
+                    <div class="form-card">
+                        <h3>Request Your Free Quote</h3>
+                        <p>Fill in your details and we'll get back to you quickly with a competitive price — no
+                            obligation.</p>
+
+                        <!-- Success message (hidden until form submitted) -->
+                        <div id="form-success">
+                            <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+                            <h3>Quote Request Received!</h3>
+                            <p>Thank you! WhatsApp is opening with your details pre-filled. We'll confirm your booking
+                                shortly.</p>
+                            <div id="whatsapp-fallback-wrap">
+                                <p style="font-size:.8rem;color:var(--gray-600);margin-bottom:.75rem;">WhatsApp didn't
+                                    open automatically?</p>
+                                <a id="whatsapp-fallback" href="https://wa.me/447434870681" target="_blank"
+                                    rel="noopener" class="btn btn-green" style="display:inline-flex;">💬 Open WhatsApp
+                                    Chat</a>
+                            </div>
+                        </div>
+
+                        <!-- Quote Form -->
+                        <form id="quote-form" novalidate>
+                            <!-- Honeypot (hidden field — bots fill it, humans don't) -->
+                            <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" />
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="fullName">Full Name *</label>
+                                    <input type="text" id="fullName" name="fullName" class="form-control"
+                                        placeholder="Jane Smith" autocomplete="name" required />
+                                    <div class="form-error" id="err-fullName"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="phone">Phone Number *</label>
+                                    <input type="tel" id="phone" name="phone" class="form-control"
+                                        placeholder="+44 7434 870681" autocomplete="tel" required />
+                                    <div class="form-error" id="err-phone"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-control"
+                                    placeholder="jane@example.com" autocomplete="email" required />
+                                <div class="form-error" id="err-email"></div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="service">Service Required *</label>
+                                    <select id="service" name="service" class="form-control" required>
+                                        <option value="">Select a service…</option>
+                                        <option value="domestic">Domestic Cleaning</option>
+                                        <option value="office">Office Cleaning</option>
+                                        <option value="deep">Deep Cleaning</option>
+                                        <option value="end-of-tenancy">End of Tenancy Cleaning</option>
+                                        <option value="carpet">Carpet Cleaning</option>
+                                    </select>
+                                    <div class="form-error" id="err-service"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="preferredDate">Preferred Date</label>
+                                    <input type="date" id="preferredDate" name="preferredDate" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="address">Property Address *</label>
+                                <input type="text" id="address" name="address" class="form-control"
+                                    placeholder="12 Baker Street, London, W1U 3BH" autocomplete="street-address"
+                                    required />
+                                <div class="form-error" id="err-address"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="message">Additional Details</label>
+                                <textarea id="message" name="message" class="form-control" rows="4"
+                                    placeholder="Number of rooms, specific requirements, access instructions…"></textarea>
+                            </div>
+
+                            <button type="submit" id="form-submit" class="btn btn-primary"
+                                style="width:100%;justify-content:center;padding:1rem;font-size:1rem;margin-top:.5rem;">
+                                Send My Quote Request
+                                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </button>
+
+                            <p style="text-align:center;color:var(--gray-400);font-size:.75rem;margin-top:1rem;">
+                                🔒 Your data is secure and never shared with third parties.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+            </div><!-- /.contact-layout -->
+
+            <!-- Google Maps Embed -->
+            <div class="map-wrap fade-in" style="margin-top:3rem;">
+                <iframe title="John's Cleaning Services — London"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158858.47340002655!2d-0.24168120642536945!3d51.52877184100736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2suk!4v1708891200000!5m2!1sen!2suk"
+                    width="100%" height="400" style="border:0;display:block;" allowfullscreen loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Prefer to Call? We'd Love to Hear From You.</h2>
+            <p>Speak to our team directly — we're available Monday to Saturday, 8am to 7pm.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                <a href="tel:+447434870681" class="btn btn-primary" style="font-size:1.05rem;">📞 Call +44 7434
+                    870681</a>
+                <a href="https://wa.me/447434870681" target="_blank" rel="noopener" class="btn btn-outline">💬 WhatsApp
+                    Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>John's <span>Cleaning</span></h3>
+                    <p>Professional cleaning services across London and the UK. Trusted, insured, and dedicated to
+                        exceptional results.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html#domestic">Domestic Cleaning</a></li>
+                        <li><a href="services.html#office">Office Cleaning</a></li>
+                        <li><a href="services.html#deep">Deep Cleaning</a></li>
+                        <li><a href="services.html#tenancy">End of Tenancy</a></li>
+                        <li><a href="services.html#carpet">Carpet Cleaning</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact</h4>
+                    <div class="footer-contact-item">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        <span>+44 7434 870681</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <span>info@johnscleaning.co.uk</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>Mon–Sat: 8am – 7pm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 John's Cleaning Services Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/form.js"></script>
+    <script>
+        // Pre-select service from URL param (e.g. contact.html?service=carpet)
+        document.addEventListener('DOMContentLoaded', function () {
+            var param = new URLSearchParams(window.location.search).get('service');
+            if (param) {
+                var sel = document.getElementById('service');
+                if (sel) sel.value = param;
+            }
+        });
+    </script>
+</body>
+
+</html>
